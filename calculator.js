@@ -16,11 +16,16 @@ let menu;
 let xValue;
 let yValue;
 let width;
-let randomNum = Math.floor(Math.random())
 
 // END: Variables declared
 
-// Functions - validation
+// Functions
+
+const randomUpTo = function (max) {
+  randomNum = Math.floor(Math.random() * (max + 1));
+  return Number(randomNum);
+};
+
 const validation1 = function (menuChoice) {
   while (menuChoice < 0 || menuChoice > 10 || isNaN(menuChoice)) {
     console.log(chalk.blue.bgRed.bold("\nNot a valid number\n"));
@@ -33,14 +38,22 @@ const validation1 = function (menuChoice) {
   }
 };
 
-const validation2 = function (numNotStr) {  
-  while (isNaN(numNotStr)) {
+const validation2 = function (numNotStr) {
+  if (numNotStr == "r") {
+    return randomUpTo(100);
+  }
+
+  while (isNaN(numNotStr) & (numNotStr != "r")) {
     console.log(chalk.blue.bgRed.bold("\nNot a valid number\n"));
 
     numNotStr = prompt(
       `"${numNotStr}" is not valid. Type a NUMBER: `.green.bold
     );
   }
+  if (numNotStr == "r") {
+    return randomUpTo(100);
+  }
+  return numNotStr;
 };
 
 // END: Functions validation
@@ -146,37 +159,43 @@ if (
   Number(menu) == 9 ||
   Number(menu) == 10
 ) {
-  {
-    xValue = prompt(`Choose a NUMBER to be your "x" variable: `.green.bold);
-  }
-  validation2(xValue);
+  xValue = prompt(
+    'Choose a NUMBER as your "x" variable (type "r" for random): '.green.bold
+  );
 
-  console.log(`\nNumber chose was: ${xValue}\n\n`)
+  xValue = validation2(xValue);
+
+  console.log(`\nNumber chose was: ${xValue}\n\n`);
 
   // second Value: Y
 
-  if (Number(menu) != 0 || Number(menu) != 1 || Number(menu) != 10) {
-    yValue = prompt(`Choose a NUMBER to be your "y" variable: `.green.bold);
+  if ((Number(menu) >= 2) & (Number(menu) <= 10)) {
+    yValue = prompt(
+      'Choose a NUMBER as your "y" variable (type "r" for random): '.green.bold
+    );
+
+    yValue = validation2(yValue);
+
+    console.log(`\nNumber chose was: ${yValue}\n\n`);
   }
-
-  validation2(yValue);
-
-  console.log(`\nNumber chose was: ${yValue}\n\n`)
 
   // third Value: width
 
   if (Number(menu) == 2) {
-    width = prompt(`Choose a NUMBER to be your "width" variable: `.green.bold);
+    width = prompt(
+      'Choose a NUMBER as your "width" variable (type "r" for random): '.green
+        .bold
+    );
 
-    validation2(width);
+    width = validation2(width);
+
+    console.log(`\nNumber chose was: ${yValue}\n\n`);
   }
-
-  console.log(`\nNumber chose was: ${yValue}\n\n`)
 }
 
 // END: VALUES INPUT
 
-pause = prompt(`\n\n Great! Press now enter to get your result!`.bold);
+pause = prompt(`Great! Press now enter to get your result!`.bold);
 
 // Class Declaration
 
@@ -334,6 +353,7 @@ if (Number(menu) == 10) {
 
 // while (typeof menu == "str") {
 //   console.log(chalk.blue.bgRed.bold("\nPlease type a valid number\n"));
+
 //   menu = (
 //     prompt(chalk.blue.bgYellowBright("Choose a number above and press enter: "))
 //   );
@@ -353,7 +373,7 @@ if (Number(menu) == 10) {
 //   console.log(chalk.blue.bgRed.bold("\nPlease type a valid number\n"));
 
 //   yValue = Number(
-//     prompt(`Choose a NUMBER to be your "y" variable: `.green.bold)
+//     prompt("Choose a NUMBER as your `y` variable: ".green.bold)
 //   );
 // }
 
@@ -361,6 +381,6 @@ if (Number(menu) == 10) {
 //   console.log(chalk.blue.bgRed.bold("\nPlease type a valid number\n"));
 
 //   yValue = Number(
-//     prompt(`Choose a NUMBER to be your "y" variable: `.green.bold)
+//     prompt("Choose a NUMBER as your `y`  variable: ".green.bold)
 //   );
 // }
