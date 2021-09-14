@@ -16,6 +16,7 @@ let menu;
 let xValue;
 let yValue;
 let width;
+let randomNum = Math.floor(Math.random())
 
 // END: Variables declared
 
@@ -32,7 +33,7 @@ const validation1 = function (menuChoice) {
   }
 };
 
-const validation2 = function (numNotStr) {
+const validation2 = function (numNotStr) {  
   while (isNaN(numNotStr)) {
     console.log(chalk.blue.bgRed.bold("\nNot a valid number\n"));
 
@@ -150,7 +151,7 @@ if (
   }
   validation2(xValue);
 
-
+  console.log(`\nNumber chose was: ${xValue}\n\n`)
 
   // second Value: Y
 
@@ -160,6 +161,8 @@ if (
 
   validation2(yValue);
 
+  console.log(`\nNumber chose was: ${yValue}\n\n`)
+
   // third Value: width
 
   if (Number(menu) == 2) {
@@ -167,6 +170,8 @@ if (
 
     validation2(width);
   }
+
+  console.log(`\nNumber chose was: ${yValue}\n\n`)
 }
 
 // END: VALUES INPUT
