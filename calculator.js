@@ -1,12 +1,8 @@
-// include validator to accept only numbers
-
-// include random numbers
-
-// Color NPM Pakets
-const prompt = require(`prompt-sync`)({ sigint: true });
+// Color NPM Packets
+const prompt = require("prompt-sync")({ sigint: true });
 const colors = require("colors");
-const chalk = require("chalk");
-const chalkAnimation = require("chalk-animation");
+// const chalk = require("chalk");
+// const chalkAnimation = require("chalk-animation");
 
 // END: Color NPM Pakets
 
@@ -20,22 +16,30 @@ let width;
 // END: Variables declared
 
 // Functions
-
 const randomUpTo = function (max) {
   randomNum = Math.floor(Math.random() * (max + 1));
   return Number(randomNum);
 };
 
 const validation1 = function (menuChoice) {
-  while (menuChoice < 0 || menuChoice > 10 || isNaN(menuChoice)) {
-    console.log(chalk.blue.bgRed.bold("\nNot a valid number\n"));
+  while (
+    menuChoice < 0 ||
+    menuChoice > 10 ||
+    isNaN(menuChoice) ||
+    menuChoice == ""
+  ) {
+    console.log("");
+
+    console.log("Not a valid number ".white.bgRed);
+
+    console.log("");
 
     menuChoice = Number(
-      prompt(
-        chalk.blue.bgYellowBright("Choose a menu-number and press enter: ")
-      )
+      prompt("Choose a menu-number and press enter: ".black.bgYellow)
     );
   }
+
+  return Number(menuChoice);
 };
 
 const validation2 = function (numNotStr) {
@@ -44,7 +48,11 @@ const validation2 = function (numNotStr) {
   }
 
   while (isNaN(numNotStr) & (numNotStr != "r")) {
-    console.log(chalk.blue.bgRed.bold("\nNot a valid number\n"));
+    console.log("");
+
+    console.log("Not a valid number ".white.bgRed);
+
+    console.log("");
 
     numNotStr = prompt(
       `"${numNotStr}" is not valid. Type a NUMBER: `.green.bold
@@ -59,15 +67,26 @@ const validation2 = function (numNotStr) {
 // END: Functions validation
 
 // WELCOME
-console.log(`\n\n Welcome to the "RAINBOW CALCULATOR". \n\n\n\n`.rainbow);
+console.log('\n\n Welcome to the "RAINBOW CALCULATOR". \n\n\n\n'.rainbow);
 
-welcome = prompt(`Please enter your name here:`);
+welcome = prompt("Please enter your name here: ".black.bgWhite);
+
+while (welcome == "" || parseFloat(welcome) || welcome.length < 3) {
+  console.log("\nCome on, tell me your name man!\n".green);
+
+  welcome = prompt("Please enter your name here: ".black.bgWhite);
+}
 
 // END: WELCOME
 
 // MENU
-console.log(`\nHello ${welcome.italic.underline.green.bold}! What you wanna do with our calculator?
+console.log(
+  `\nHello ${welcome.italic.underline.bold}! What you wanna do with our calculator?`
+    .yellow
+);
 
+console.log(
+  `\n
 0 - Calculate Number PI
 1 - Calculate Eulner's number
 2 - Calculate Ratio (x,y, width)
@@ -78,67 +97,57 @@ console.log(`\nHello ${welcome.italic.underline.green.bold}! What you wanna do w
 7 - calculate.divide(x, y)
 8 - calculate.modulation(x, y)
 9 - calculate.elevate(x, y)
-10 - calculate.sqrt(x)\n`);
-
-menu = prompt(
-  chalk.blue.bgYellowBright("  Choose a menu-number and press enter: ")
+10 - calculate.sqrt(x)\n`.italic.cyan
 );
 
-validation1(menu);
+menu = prompt("  Choose a menu-number and press enter: ".black.bgYellow);
+
+menu = validation1(menu);
 
 if (Number(menu) == 2) {
   console.log(
-    `\n This function calculates the "height" considering a given "width" an a given ratio "x (width) : y (height)". Choose next your variables: 
-    
-    `.italic
+    '\n This function calculates the "height" considering a given "width" an a given ratio "x (width) : y (height)". Choose next your variables: '
+      .italic
   );
 } else if (Number(menu) == 3) {
   console.log(
-    `\n This function calculates the percentage of "x" in "y". Choose next your variables: 
-    
-    `.italic
+    '\n This function calculates the percentage of "x" in "y". Choose next your variables:'
+      .italic
   );
 } else if (Number(menu) == 4) {
   console.log(
-    `\n This function calculates the simply sum of "x" + "y". Choose next your variables: 
-    
-    `.italic
+    '\n This function calculates the simply sum of "x" + "y". Choose next your variables:'
+      .italic
   );
 } else if (Number(menu) == 5) {
   console.log(
-    `\n This function calculates the simply subtraction of "x" - "y". Choose next your variables: 
-    
-    `.italic
+    '\n This function calculates the simply subtraction of "x" - "y". Choose next your variables:'
+      .italic
   );
 } else if (Number(menu) == 6) {
   console.log(
-    `\n This function calculates the multiplication "x" * "y". Choose next your variables: 
-    
-    `.italic
+    '\n This function calculates the multiplication "x" * "y". Choose next your variables:'
+      .italic
   );
 } else if (Number(menu) == 7) {
   console.log(
-    `\n This function calculates the division of "x" / "y". Choose next your variables: 
-    
-    `.italic
+    '\n This function calculates the division of "x" / "y". Choose next your variables:'
+      .italic
   );
 } else if (Number(menu) == 8) {
   console.log(
-    `\n This function returns the remainder of "x" divided by "y". Choose next your variables: 
-    
-    `.italic
+    '\n This function returns the remainder of "x" divided by "y". Choose next your variables:'
+      .italic
   );
 } else if (Number(menu) == 9) {
   console.log(
-    `\n This function returns the power of "x" elevated to "y". Choose next your variables: 
-    
-    `.italic
+    '\n This function returns the power of "x" elevated to "y". Choose next your variables:'
+      .italic
   );
 } else if (Number(menu) == 10) {
   console.log(
-    `\n This function returns the square root of "x". Choose next your variables: 
-    
-    `.italic
+    '\n This function returns the square root of "x". Choose next your variables:'
+      .italic
   );
 }
 
@@ -165,22 +174,22 @@ if (
 
   xValue = validation2(xValue);
 
-  console.log(`\nNumber chose was: ${xValue}\n\n`);
-
-  // second Value: Y
-
-  if ((Number(menu) >= 2) & (Number(menu) <= 10)) {
+  console.log(`\nNumber chosen was: ${xValue}\n\n`.magenta);
+}
+// second Value: Y
+{
+  if ((Number(menu) >= 2) & (Number(menu) < 10)) {
     yValue = prompt(
       'Choose a NUMBER as your "y" variable (type "r" for random): '.green.bold
     );
 
     yValue = validation2(yValue);
 
-    console.log(`\nNumber chose was: ${yValue}\n\n`);
+    console.log(`\nNumber chosen was: ${yValue}\n\n`.magenta);
   }
-
-  // third Value: width
-
+}
+// third Value: width
+{
   if (Number(menu) == 2) {
     width = prompt(
       'Choose a NUMBER as your "width" variable (type "r" for random): '.green
@@ -189,13 +198,13 @@ if (
 
     width = validation2(width);
 
-    console.log(`\nNumber chose was: ${yValue}\n\n`);
+    console.log(`\nNumber chosen was: ${width}\n\n`.magenta);
   }
 }
 
 // END: VALUES INPUT
 
-pause = prompt(`Great! Press now enter to get your result!`.bold);
+pause = prompt("Great! Press now enter to get your result!".bold);
 
 // Class Declaration
 
@@ -231,8 +240,8 @@ class Calculator {
   }
 
   divide() {
-    if (this.y === 0) {
-      console.log(`\nERROR: the divisor cannot be 0`.red);
+    if (this.y == 0) {
+      console.log('\nERROR: the divisor cannot be "0"'.red);
     } else {
       return this.x % this.y;
     }
@@ -240,7 +249,7 @@ class Calculator {
 
   modulation() {
     if (this.y == 0) {
-      return `\nERROR: the divisor cannot be 0`.red;
+      console.log('\nERROR: the divisor cannot be "0"'.red);
     } else {
       return this.x % this.y;
     }
