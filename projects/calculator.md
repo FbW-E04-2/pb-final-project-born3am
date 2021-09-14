@@ -21,7 +21,7 @@ calculate.percentage(x,y) // return percentage of x in y.
 
 calculate.add(x, y) // Returns the sum of x added to y.
 
-calculate.subtract(x, y) // Returns the differente of y subtracted to x.
+calculate.subtract(x, y) // Returns the differente of y subtracted from x.
 
 calculate.multiply(x, y) // Returns the product of x multiplied by y.
 
