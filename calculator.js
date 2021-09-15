@@ -1,8 +1,8 @@
-// Color NPM Packets
+// Color NPM Packages
 const prompt = require("prompt-sync")({ sigint: true });
 const colors = require("colors");
 // const chalk = require("chalk");
-// const chalkAnimation = require("chalk-animation");
+const chalkAnimation = require("chalk-animation");
 
 // END: Color NPM Pakets
 
@@ -35,7 +35,7 @@ const validation1 = function (menuChoice) {
     console.log("");
 
     menuChoice = Number(
-      prompt("Choose a menu-number and press enter: ".black.bgYellow)
+      prompt("Choose a menu number (0-10) and press enter: ".black.bgYellow)
     );
   }
 
@@ -67,9 +67,16 @@ const validation2 = function (numNotStr) {
 // END: Functions validation
 
 // WELCOME
-console.log('\n\n Welcome to the "RAINBOW CALCULATOR". \n\n\n\n'.rainbow);
+console.clear();
+
+console.log(
+  '\n\n     Welcome to the "RAINBOW CALCULATOR"    \n\n\n\n'
+    .rainbow
+);
 
 welcome = prompt("Please enter your name here: ".black.bgWhite);
+
+console.clear();
 
 while (welcome == "" || parseFloat(welcome) || welcome.length < 3) {
   console.log("\nCome on, tell me your name man!\n".green);
@@ -80,6 +87,9 @@ while (welcome == "" || parseFloat(welcome) || welcome.length < 3) {
 // END: WELCOME
 
 // MENU
+
+console.clear();
+
 console.log(
   `\nHello ${welcome.italic.underline.bold}! What you wanna do with our calculator?`
     .yellow
@@ -100,51 +110,71 @@ console.log(
 10 - calculate.sqrt(x)\n`.italic.cyan
 );
 
-menu = prompt("  Choose a menu-number and press enter: ".black.bgYellow);
+menu = prompt("  Choose a menu number(0-10) and press enter: ".black.bgYellow);
+
+console.clear();
 
 menu = validation1(menu);
 
 if (Number(menu) == 2) {
+  console.clear();
+
   console.log(
     '\n This function calculates the "height" considering a given "width" an a given ratio "x (width) : y (height)". Choose next your variables: '
       .italic
   );
 } else if (Number(menu) == 3) {
+  console.clear();
+
   console.log(
     '\n This function calculates the percentage of "x" in "y". Choose next your variables:'
       .italic
   );
 } else if (Number(menu) == 4) {
+  console.clear();
+
   console.log(
     '\n This function calculates the simply sum of "x" + "y". Choose next your variables:'
       .italic
   );
 } else if (Number(menu) == 5) {
+  console.clear();
+
   console.log(
     '\n This function calculates the simply subtraction of "x" - "y". Choose next your variables:'
       .italic
   );
 } else if (Number(menu) == 6) {
+  console.clear();
+
   console.log(
     '\n This function calculates the multiplication "x" * "y". Choose next your variables:'
       .italic
   );
 } else if (Number(menu) == 7) {
+  console.clear();
+
   console.log(
     '\n This function calculates the division of "x" / "y". Choose next your variables:'
       .italic
   );
 } else if (Number(menu) == 8) {
+  console.clear();
+
   console.log(
     '\n This function returns the remainder of "x" divided by "y". Choose next your variables:'
       .italic
   );
 } else if (Number(menu) == 9) {
+  console.clear();
+
   console.log(
     '\n This function returns the power of "x" elevated to "y". Choose next your variables:'
       .italic
   );
 } else if (Number(menu) == 10) {
+  console.clear();
+
   console.log(
     '\n This function returns the square root of "x". Choose next your variables:'
       .italic
@@ -203,6 +233,8 @@ if (
 }
 
 // END: VALUES INPUT
+
+console.clear();
 
 pause = prompt("Great! Press now enter to get your result!".bold);
 
@@ -348,48 +380,18 @@ if (Number(menu) == 10) {
 
 // FINAL ANIMATION
 
-// const rainbow = chalkAnimation.rainbow('See you later!!!'); // Animation starts
+const rainbow = chalkAnimation.rainbow("See you later!!!"); // Animation starts
 
-// setTimeout(() => {
-//     rainbow.stop(); // Animation stops
+chalkAnimation.rainbow("I hope you had fun. See you later!!!", 1);
+setTimeout(() => {
+  // Stop the animation, then write on a new line.
+  console.log("");
+}, 1000);
+
+// let str = 'Loading...';
+// const loading = chalkAnimation.rainbow(str);
+
+// // Add a new dot every second
+// setInterval(() => {
+// 	loading.replace(str += '.');
 // }, 1000);
-
-// setTimeout(() => {
-//     rainbow.start(); // Animation resumes
-// }, 2000)
-
-// GARBAGE
-
-// while (typeof menu == "str") {
-//   console.log(chalk.blue.bgRed.bold("\nPlease type a valid number\n"));
-
-//   menu = (
-//     prompt(chalk.blue.bgYellowBright("Choose a number above and press enter: "))
-//   );
-// }
-
-// while (menu < 0 || menu > 10 || isNaN(menu)) {
-//   console.log(chalk.blue.bgRed.bold("\nPlease type a valid number\n"));
-
-//   menu = prompt(
-//     chalk.blue.bgYellowBright("Choose a number above and press enter: ")
-//   );
-// }
-
-// -----------------------
-
-// while (typeof yValue == "str") {
-//   console.log(chalk.blue.bgRed.bold("\nPlease type a valid number\n"));
-
-//   yValue = Number(
-//     prompt("Choose a NUMBER as your `y` variable: ".green.bold)
-//   );
-// }
-
-// while (Number.isNaN(yValue)) {
-//   console.log(chalk.blue.bgRed.bold("\nPlease type a valid number\n"));
-
-//   yValue = Number(
-//     prompt("Choose a NUMBER as your `y`  variable: ".green.bold)
-//   );
-// }
