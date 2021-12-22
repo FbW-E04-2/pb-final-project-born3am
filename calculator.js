@@ -4,7 +4,7 @@ const colors = require("colors");
 // const chalk = require("chalk");
 const chalkAnimation = require("chalk-animation");
 
-// END: Color NPM Pakets
+// END: Color NPM packages
 
 // Variables declared
 let welcome;
